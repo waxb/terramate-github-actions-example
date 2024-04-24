@@ -11,7 +11,7 @@
       "with":
         "fetch-depth": 0
     - "name": "check for ${{ inputs.environment }}"
-      "run": "cat stacks/${{ inputs.environment }}/*"
+      "run": "[ ${{ inputs.environment }} != \"staging\" ]"
 "on":
   "workflow_call":
     "inputs":
