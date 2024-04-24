@@ -18,3 +18,5 @@ globals "repository" {
   # toggle chaotic good example for workflow generation (json > yaml)
   chaotic_good = false
 }
+
+# dummy configuration change
