@@ -11,10 +11,10 @@ globals "workflows" {
 
 globals "repository" {
   # which environments to manage
-  environments = ["dev", "staging", "prod"]
+  environments = ["dev", "staging"]
   # run workflows on all environments regardless of change
   # reducing the number of jobs based on changes optimises github actions runtime
-  always_run = false
+  always_run = true
   # toggle chaotic good example for workflow generation (json > yaml)
   chaotic_good = false
 }

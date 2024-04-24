@@ -10,21 +10,22 @@
     - "name": "check all jobs for approval"
       "uses": "re-actors/alls-green@05ac9388f0aebcb5727afa17fcccfecd6f8ec5fe"
       "with":
-        "allowed-skips": "call-workflows"
+        "allowed-skips": "generate-matrix"
         "jobs": "${{ toJSON(needs) }}"
   "call-workflows":
-    "if": "${{ needs.generate-matrix.outputs.matrix != '' }}"
-    "needs":
-    - "generate-matrix"
+    "if": true
+    "needs": []
     "secrets": "inherit"
     "strategy":
       "matrix":
-        "environments": "${{ fromJSON(needs.generate-matrix.outputs.matrix) }}"
+        "environments":
+        - "dev"
+        - "staging"
     "uses": "./.github/workflows/called.yaml"
     "with":
       "environment": "${{ matrix.environments }}"
   "generate-matrix":
-    "if": true
+    "if": false
     "outputs":
       "matrix": "${{ steps.generate.outputs.matrix }}"
     "runs-on":
@@ -37,7 +38,7 @@
     - "id": "generate"
       "name": "generate matrix"
       "run": |
-        output="$(for i in dev staging prod ; do [[ -z $(git diff --name-only origin/main...HEAD | grep -E "stacks/${i}") ]] || echo $i ; done)"
+        output="$(for i in dev staging ; do [[ -z $(git diff --name-only origin/main...HEAD | grep -E "stacks/${i}") ]] || echo $i ; done)"
         [ -z "$output" ] || echo "matrix=[\""${output//[ ]/\", \"}"\"]" >> "$GITHUB_OUTPUT"
 "name": "main"
 "on":
