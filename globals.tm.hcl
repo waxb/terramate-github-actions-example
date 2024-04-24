@@ -10,6 +10,8 @@ globals "workflows" {
 }
 
 globals "repository" {
+  # my account is so old that the default branch was `master`
+  main = "master"
   # which environments to manage
   environments = ["dev", "staging", "prod"]
   # run workflows on all environments regardless of change
