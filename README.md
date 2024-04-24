@@ -72,13 +72,13 @@ this workflow aims to showcase how to do specific tasks on specific environments
 
 # example pull requests
 
-- change outside of environments
-- always run
-- change on `dev` and `staging`
-- unmanage `prod`
-- fail `dev`
-- fail `staging` && always run
-- chaotic good
+- change outside of environments [#1](https://github.com/waxb/terramate-github-actions-example/pull/1)
+- always run [#2](https://github.com/waxb/terramate-github-actions-example/pull/2)
+- change on `dev` and `staging` [#3](https://github.com/waxb/terramate-github-actions-example/pull/3)
+- unmanage `prod` [#4](https://github.com/waxb/terramate-github-actions-example/pull/4)
+- fail `dev` [#5](https://github.com/waxb/terramate-github-actions-example/pull/5)
+- fail `staging` && always run [#6](https://github.com/waxb/terramate-github-actions-example/pull/6)
+- chaotic good [#7](https://github.com/waxb/terramate-github-actions-example/pull/7)
 
 # terramate
 
