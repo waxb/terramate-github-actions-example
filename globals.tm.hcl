@@ -16,5 +16,5 @@ globals "repository" {
   # reducing the number of jobs based on changes optimises github actions runtime
   always_run = false
   # toggle chaotic good example for workflow generation (json > yaml)
-  chaotic_good = false
+  chaotic_good = true
 }
