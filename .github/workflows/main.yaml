@@ -10,21 +10,23 @@
     - "name": "check all jobs for approval"
       "uses": "re-actors/alls-green@05ac9388f0aebcb5727afa17fcccfecd6f8ec5fe"
       "with":
-        "allowed-skips": "call-workflows"
+        "allowed-skips": "generate-matrix"
         "jobs": "${{ toJSON(needs) }}"
   "call-workflows":
-    "if": "${{ needs.generate-matrix.outputs.matrix != '' }}"
-    "needs":
-    - "generate-matrix"
+    "if": true
+    "needs": []
     "secrets": "inherit"
     "strategy":
       "matrix":
-        "environments": "${{ fromJSON(needs.generate-matrix.outputs.matrix) }}"
+        "environments":
+        - "dev"
+        - "staging"
+        - "prod"
     "uses": "./.github/workflows/called.yaml"
     "with":
       "environment": "${{ matrix.environments }}"
   "generate-matrix":
-    "if": true
+    "if": false
     "outputs":
       "matrix": "${{ steps.generate.outputs.matrix }}"
     "runs-on":
