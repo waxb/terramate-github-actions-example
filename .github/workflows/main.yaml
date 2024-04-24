@@ -37,7 +37,7 @@
     - "id": "generate"
       "name": "generate matrix"
       "run": |
-        output="$(for i in dev staging prod ; do [[ -z $(git diff --name-only origin/main...HEAD | grep -E "stacks/${i}") ]] || echo $i ; done)"
+        output="$(for i in dev staging prod ; do [[ -z $(git diff --name-only origin/master...HEAD | grep -E "stacks/${i}") ]] || echo $i ; done)"
         [ -z "$output" ] || echo "matrix=[\""${output//[ ]/\", \"}"\"]" >> "$GITHUB_OUTPUT"
 "name": "main"
 "on":

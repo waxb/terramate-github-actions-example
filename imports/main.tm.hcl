@@ -35,7 +35,7 @@ globals "workflow" "main" {
           name = "generate matrix"
           id   = "generate"
           run  = <<-EOF
-            output="$(for i in ${tm_join(" ", global.repository.environments)} ; do [[ -z $(git diff --name-only origin/main...HEAD | grep -E "stacks/$${i}") ]] || echo $i ; done)"
+            output="$(for i in ${tm_join(" ", global.repository.environments)} ; do [[ -z $(git diff --name-only origin/${global.repository.main}...HEAD | grep -E "stacks/$${i}") ]] || echo $i ; done)"
             [ -z "$output" ] || echo "matrix=[\""$${output//[ ]/\", \"}"\"]" >> "$GITHUB_OUTPUT"
           EOF
         }
