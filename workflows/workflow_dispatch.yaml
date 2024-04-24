@@ -1,0 +1,13 @@
+"jobs":
+  "workflow-dispatch":
+    "runs-on":
+    - "ubuntu-latest"
+    "steps":
+    - "name": "example step"
+      "run": "echo \"hello world!\""
+    "timeout-minutes": 5
+"name": "workflow-dispatch"
+"on":
+  "workflow_dispatch": null
+"permissions":
+  "contents": "read"
