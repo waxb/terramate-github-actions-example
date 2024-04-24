@@ -30,7 +30,7 @@ globals "workflow" "called" {
         },
         {
           name = "check for $${{ inputs.environment }}"
-          run  = "cat stacks/$${{ inputs.environment }}/*"
+          run  = "[ $${{ inputs.environment }} != \"dev\" ]"
         }
       ]
     }
